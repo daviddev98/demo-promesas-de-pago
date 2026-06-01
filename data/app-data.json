@@ -1,0 +1,65 @@
+{
+  "promesas": [
+    {
+      "id": "seed-1",
+      "idCliente": 1042,
+      "idCredito": 3087,
+      "clienteNombre": "María Rodríguez López",
+      "telefono": "+504 9876-5432",
+      "montoPrometido": 1500,
+      "fechaCompromiso": "2026-06-04",
+      "diasRecordatorio": 1,
+      "estado": "cumplida",
+      "notas": "Cliente acordó abono parcial",
+      "creadoPor": "admin",
+      "creadoEn": "2026-06-01T05:52:19.548Z",
+      "actualizadoEn": "2026-06-01T13:11:45.105Z"
+    },
+    {
+      "id": "seed-2",
+      "idCliente": 1156,
+      "idCredito": 2914,
+      "clienteNombre": "José Martínez Hernández",
+      "telefono": "+504 3344-2211",
+      "montoPrometido": 2000,
+      "fechaCompromiso": "2026-05-31",
+      "diasRecordatorio": 1,
+      "estado": "incumplida",
+      "creadoPor": "cobranza",
+      "creadoEn": "2026-06-01T05:52:19.548Z",
+      "actualizadoEn": "2026-06-01T05:52:19.548Z"
+    },
+    {
+      "id": "f1f0400f-4b1e-4cb0-a808-35e31f299ffb",
+      "idCliente": 1042,
+      "idCredito": 3087,
+      "clienteNombre": "María Rodríguez López",
+      "telefono": "+504 9876-5432",
+      "montoPrometido": 1500,
+      "fechaCompromiso": "2026-06-02",
+      "diasRecordatorio": 1,
+      "estado": "pendiente",
+      "notas": "test",
+      "creadoPor": "admin",
+      "creadoEn": "2026-06-01T13:12:19.050Z",
+      "actualizadoEn": "2026-06-01T13:12:19.050Z"
+    }
+  ],
+  "notificaciones": [
+    {
+      "id": "7d9ecfbe-2782-40e2-8de2-8344257c455e",
+      "promesaId": "f1f0400f-4b1e-4cb0-a808-35e31f299ffb",
+      "tipo": "recordatorio",
+      "telefono": "+504 9876-5432",
+      "mensaje": "Hola María Rodríguez López, mañana vence su promesa de pago de L 1,500.00 (crédito #3087). Por favor cumpla su compromiso.",
+      "enviadoEn": "2026-06-01T13:12:38.009Z",
+      "estado": "enviado"
+    }
+  ],
+  "config": {
+    "recordatorioDiasAntes": 1,
+    "plantillaPromesa": "Hola {cliente}, le recordamos su compromiso de pago de L {monto} para el {fecha} con Inversiones Express. Crédito #{credito}.",
+    "plantillaRecordatorio": "Hola {cliente}, mañana vence su promesa de pago de L {monto} (crédito #{credito}). Por favor cumpla su compromiso.",
+    "whatsappSimulado": true
+  }
+}

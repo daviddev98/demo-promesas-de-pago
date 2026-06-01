@@ -1,0 +1,82 @@
+import type { ClienteMora } from "./types";
+
+/** Clientes en mora — alineado al dominio de comercialCreditos */
+export const CLIENTES_EN_MORA: ClienteMora[] = [
+  {
+    idCliente: 1042,
+    nombre: "María",
+    apellido: "Rodríguez López",
+    identidad: "0801-1990-12345",
+    telefono: "+504 9876-5432",
+    diasMora: 18,
+    saldoMora: 4250.0,
+    idCredito: 3087,
+    numeroCredito: 3087,
+    descripcionArticulo: "Samsung Galaxy A15 128GB",
+  },
+  {
+    idCliente: 1156,
+    nombre: "José",
+    apellido: "Martínez Hernández",
+    identidad: "0501-1985-67890",
+    telefono: "+504 3344-2211",
+    diasMora: 32,
+    saldoMora: 6800.5,
+    idCredito: 2914,
+    numeroCredito: 2914,
+    descripcionArticulo: "iPhone 13 128GB",
+  },
+  {
+    idCliente: 1289,
+    nombre: "Ana",
+    apellido: "García Mejía",
+    identidad: "0801-1995-11223",
+    telefono: "+504 9988-7766",
+    diasMora: 7,
+    saldoMora: 1890.0,
+    idCredito: 3201,
+    numeroCredito: 3201,
+    descripcionArticulo: "Xiaomi Redmi Note 13",
+  },
+  {
+    idCliente: 1334,
+    nombre: "Carlos",
+    apellido: "Pineda Reyes",
+    identidad: "0501-1992-44556",
+    telefono: "+504 9654-3210",
+    diasMora: 45,
+    saldoMora: 9200.0,
+    idCredito: 2756,
+    numeroCredito: 2756,
+    descripcionArticulo: "Motorola Edge 40",
+  },
+  {
+    idCliente: 1401,
+    nombre: "Sandra",
+    apellido: "Valladares Cruz",
+    identidad: "0801-1988-77889",
+    telefono: "+504 8812-4567",
+    diasMora: 12,
+    saldoMora: 3150.75,
+    idCredito: 3155,
+    numeroCredito: 3155,
+    descripcionArticulo: "Honor X8b 256GB",
+  },
+];
+
+export const USUARIOS_DEMO = [
+  {
+    id: "1",
+    usuario: "admin",
+    clave: "admin123",
+    nombre: "Administrador Sistema",
+    rol: "administrador" as const,
+  },
+  {
+    id: "2",
+    usuario: "cobranza",
+    clave: "cobranza123",
+    nombre: "Equipo Cobranza",
+    rol: "cobranza" as const,
+  },
+];
