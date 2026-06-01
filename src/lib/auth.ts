@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { clearMemoryStore } from "./memory-store";
 import type { SessionPayload, Usuario } from "./types";
 import { USUARIOS_DEMO } from "./seed";
 
@@ -37,6 +38,7 @@ export async function login(
   const payload: SessionPayload = {
     user,
     exp: Date.now() + MAX_AGE * 1000,
+    sid: crypto.randomUUID(),
   };
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, encodeSession(payload), {
@@ -50,8 +52,18 @@ export async function login(
 }
 
 export async function logout(): Promise<void> {
+  const sid = await getSessionStoreId();
+  if (sid) clearMemoryStore(sid);
   const cookieStore = await cookies();
   cookieStore.delete(COOKIE_NAME);
+}
+
+export async function getSessionStoreId(): Promise<string | null> {
+  const cookieStore = await cookies();
+  const raw = cookieStore.get(COOKIE_NAME)?.value;
+  if (!raw) return null;
+  const payload = decodeSession(raw);
+  return payload?.sid ?? null;
 }
 
 export async function getSession(): Promise<Usuario | null> {

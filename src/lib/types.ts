@@ -64,4 +64,6 @@ export interface AppData {
 export interface SessionPayload {
   user: Usuario;
   exp: number;
+  /** Identificador del almacén en memoria (Vercel / fallback). */
+  sid: string;
 }

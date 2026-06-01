@@ -52,6 +52,7 @@ export function PromesasModule() {
   const [config, setConfig] = useState<ConfigNotificaciones | null>(null);
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState<string | null>(null);
+  const [storageMode, setStorageMode] = useState<"file" | "memory" | null>(null);
 
   const [filtroEstado, setFiltroEstado] = useState<EstadoPromesa | "">("");
   const [filtroDesde, setFiltroDesde] = useState("");
@@ -75,13 +76,15 @@ export function PromesasModule() {
       if (filtroHasta) params.set("hasta", filtroHasta);
       if (filtroCliente) params.set("idCliente", filtroCliente);
 
-      const [s, p, c, n, cfg] = await Promise.all([
+      const [s, p, c, n, cfg, meta] = await Promise.all([
         fetch("/api/promesas/stats").then((r) => r.json()),
         fetch(`/api/promesas?${params}`).then((r) => r.json()),
         fetch("/api/clientes-mora").then((r) => r.json()),
         fetch("/api/notificaciones").then((r) => r.json()),
         fetch("/api/config").then((r) => r.json()),
+        fetch("/api/meta").then((r) => r.json()),
       ]);
+      setStorageMode(meta.storageMode ?? "file");
       setStats(s.stats);
       setPromesas(p.promesas);
       setClientes(c.clientes);
@@ -187,6 +190,12 @@ export function PromesasModule() {
         <p className="mt-1 text-sm text-gray-400">
           Registro, seguimiento y notificaciones WhatsApp para clientes en mora
         </p>
+        {storageMode === "memory" && (
+          <p className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
+            Modo demo en la nube: los cambios se guardan en memoria por sesión y
+            se borran al cerrar sesión.
+          </p>
+        )}
       </header>
 
       {msg && (
